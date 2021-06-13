@@ -58,3 +58,11 @@
 (setq confirm-kill-emacs nil)
 
 (setq evil-want-fine-undo t)
+
+(add-hook 'dired-mode-hook 'dired-hide-details-mode)
+
+(dolist (section +doom-dashboard-menu-sections)
+  (let ((section-plist (cdr section)))
+    (plist-put section-plist :icon nil)))
+
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
