@@ -66,3 +66,15 @@
     (plist-put section-plist :icon nil)))
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+
+;; My understanding is that `call-process' spawns a process that runs in the background.
+;; So just calling cmd.exe by itself doesn't open a cmd window.
+;; Therefore I pass `start /d <path>' to cmd.exe to open a cmd window.
+(defun open-cmd-here ()
+  (interactive)
+  (call-process "cmd.exe" nil 0 nil "/C" "start" "/d" (windows-path default-directory)))
+
+;; TODO Implement open-admin-cmd-here
+
+(defun windows-path (str)
+  (replace-regexp-in-string "\/" "\\\\" str))
