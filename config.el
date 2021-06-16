@@ -69,12 +69,26 @@
 
 ;; My understanding is that `call-process' spawns a process that runs in the background.
 ;; So just calling cmd.exe by itself doesn't open a cmd window.
-;; Therefore I pass `start /d <path>' to cmd.exe to open a cmd window.
+;; Therefore I pass `start' to cmd.exe to open a cmd window.
 (defun open-cmd-here ()
+  "Open command prompt in current directory."
   (interactive)
-  (call-process "cmd.exe" nil 0 nil "/C" "start" "/d" (windows-path default-directory)))
+  (call-process "cmd" nil 0 nil "/C" "start"))
 
-;; TODO Implement open-admin-cmd-here
+;; Runs process of the form `powershell start cmd \"/k cd /d <path>\" -Verb runAs'
+(defun open-admin-cmd-here ()
+  "Open command prompt with administrator privileges in current directory."
+  (interactive)
+  (call-process
+   "powershell"
+   nil
+   0
+   nil
+   "start"
+   "cmd"
+   (concat "\\\"/k cd /d " (windows-path default-directory) "\\\"")
+   "-Verb"
+   "runAs"))
 
 (defun windows-path (str)
   (replace-regexp-in-string "\/" "\\\\" str))
