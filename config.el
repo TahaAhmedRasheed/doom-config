@@ -74,7 +74,7 @@
   (call-process "wt" nil 0 nil "-d" (windows-path (expand-file-name default-directory))))
 
 ;; Passes a command of the form `cmd "/c wt -d C:\path\to\dir"' to `powershell start'
-;; -Verb runAs lets wt run with administrator with privileges
+;; -Verb runAs lets wt run with administrator privileges
 ;; It's unclear why powershell has to ask cmd to open wt; asking powershell to open
 ;; wt directly doesn't seem to work for some reason
 (defun open-admin-wt-here ()
