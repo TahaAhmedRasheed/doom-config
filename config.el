@@ -61,23 +61,24 @@
 
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
-(dolist (section +doom-dashboard-menu-sections)
-  (let ((section-plist (cdr section)))
-    (plist-put section-plist :icon nil)))
+;; Remove the icons on the dashboard
+;;(dolist (section +doom-dashboard-menu-sections)
+;;  (let ((section-plist (cdr section)))
+;;    (plist-put section-plist :icon nil)))
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
 
-;; My understanding is that `call-process' spawns a process that runs in the background.
-;; So just calling cmd.exe by itself doesn't open a cmd window.
-;; Therefore I pass `start' to cmd.exe to open a cmd window.
-(defun open-cmd-here ()
-  "Open command prompt in current directory."
+(defun open-wt-here ()
+  "Open Windows Terminal in current directory."
   (interactive)
-  (call-process "cmd" nil 0 nil "/C" "start"))
+  (call-process "wt" nil 0 nil "-d" (windows-path (expand-file-name default-directory))))
 
-;; Runs process of the form `powershell start cmd \"/k cd /d <path>\" -Verb runAs'
-(defun open-admin-cmd-here ()
-  "Open command prompt with administrator privileges in current directory."
+;; Passes a command of the form `cmd "/c wt -d C:\path\to\dir"' to `powershell start'
+;; -Verb runAs lets wt run with administrator with privileges
+;; It's unclear why powershell has to ask cmd to open wt; asking powershell to open
+;; wt directly doesn't seem to work for some reason
+(defun open-admin-wt-here ()
+  "Open Windows Terminal with administrator privileges in current directory."
   (interactive)
   (call-process
    "powershell"
@@ -86,7 +87,7 @@
    nil
    "start"
    "cmd"
-   (concat "\\\"/k cd /d " (windows-path default-directory) "\\\"")
+   (concat "\"/c wt -d " (windows-path (expand-file-name default-directory)) "\"")
    "-Verb"
    "runAs"))
 
