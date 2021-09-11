@@ -19,7 +19,17 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :name "Fira Code" :size 13 :weight 'semi-light)
+
+;; An integral `:size' is interpreted as pixels. Floating-point numbers are
+;; interpreted as points.
+
+(setq fira-spec (font-spec :name "Fira Code" :size 13 :weight 'semi-light))
+
+(setq jetbrains-spec (font-spec :name "JetBrains Mono" :size 13 :weight 'light))
+
+(setq source-spec (font-spec :name "Source Code Pro" :size 10.2 :weight 'regular))
+
+(setq doom-font source-spec
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -59,6 +69,8 @@
 
 (setq evil-want-fine-undo t)
 
+(setq evil-snipe-scope 'buffer)
+
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
 ;; Remove the icons on the dashboard
@@ -94,11 +106,17 @@
 (defun windows-path (str)
   (replace-regexp-in-string "\/" "\\\\" str))
 
+(map!
+ :leader
+ "ot" #'open-wt-here
+ "oT" #'open-admin-wt-here)
+
 ;; Prevents evil delete commands from copying text in addition to removing it.
 ;; It does this by making each delete command copy text to the "black hole"
 ;; register (_), which leaves the system clipboard and other registers untouched.
 ;; Use the " register (e.g. ""diw) if the old behaviour is desired.
-(defadvice! my-evil-delete-default-to-black-hole-a (fn beg end type register yank-handler)
+(defadvice! my-evil-delete-default-to-black-hole-a
+  (fn beg end &optional type register yank-handler)
   "Advise `evil-delete' to set default REGISTER to the black hole register."
   :around #'evil-delete
   (unless register (setq register ?_))
