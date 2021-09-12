@@ -83,7 +83,7 @@
 (defun open-wt-here ()
   "Open Windows Terminal in current directory."
   (interactive)
-  (call-process "wt" nil 0 nil "-d" (windows-path (expand-file-name default-directory))))
+  (call-process "wt" nil 0 nil "-d" (expand-file-name default-directory)))
 
 ;; Passes a command of the form `cmd "/c wt -d C:\path\to\dir"' to `powershell start'
 ;; -Verb runAs lets wt run with administrator privileges
@@ -99,12 +99,9 @@
    nil
    "start"
    "cmd"
-   (concat "\"/c wt -d " (windows-path (expand-file-name default-directory)) "\"")
+   (concat "\"/c wt -d " (expand-file-name default-directory) "\"")
    "-Verb"
    "runAs"))
-
-(defun windows-path (str)
-  (replace-regexp-in-string "\/" "\\\\" str))
 
 (map!
  :leader
