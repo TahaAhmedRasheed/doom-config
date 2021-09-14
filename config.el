@@ -83,7 +83,7 @@
 (defun open-wt-here ()
   "Open Windows Terminal in current directory."
   (interactive)
-  (call-process "wt" nil 0 nil "-d" (expand-file-name default-directory)))
+  (call-process "cmd" nil 0 nil "/c" "wt" "-d" (expand-file-name default-directory)))
 
 ;; Passes a command of the form `cmd "/c wt -d C:\path\to\dir"' to `powershell start'
 ;; -Verb runAs lets wt run with administrator privileges
@@ -111,7 +111,7 @@
 ;; Prevents evil delete commands from copying text in addition to removing it.
 ;; It does this by making each delete command copy text to the "black hole"
 ;; register (_), which leaves the system clipboard and other registers untouched.
-;; Use the " register (e.g. ""diw) if the old behaviour is desired.
+;; Use the " register explicitly (e.g. ""diw) if the old behaviour is desired.
 (defadvice! my-evil-delete-default-to-black-hole-a
   (fn beg end &optional type register yank-handler)
   "Advise `evil-delete' to set default REGISTER to the black hole register."
