@@ -1,0 +1,105 @@
+#+TITLE: Config
+#+PROPERTY: header-args :tangle yes
+
+* Appearance
+** Startup
+#+BEGIN_SRC elisp
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+#+END_SRC
+** Theme
+#+BEGIN_SRC elisp
+(setq doom-theme 'doom-gruvbox)
+#+END_SRC
+** Font
+Switched to Source from Fira recently. Looks nicer and, unlike Fira, can be /italicised/. [[https://github.com/adobe-fonts/source-code-pro/][Download]]
+
+#+BEGIN_SRC elisp
+;; An integral `:size' is interpreted as pixels. Floating-point numbers are
+;; interpreted as points.
+(setq fira-spec (font-spec :name "Fira Code" :size 13 :weight 'semi-light))
+
+(setq jetbrains-spec (font-spec :name "JetBrains Mono" :size 13 :weight 'light))
+
+(setq source-spec (font-spec :name "Source Code Pro" :size 10.2 :weight 'regular))
+
+(setq doom-font source-spec
+      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+#+END_SRC
+** Line Numbers
+#+BEGIN_SRC elisp
+(setq display-line-numbers-type t)
+#+END_SRC
+** Dashboard
+#+BEGIN_SRC elisp
+;; Remove the icons on the dashboard
+;;(dolist (section +doom-dashboard-menu-sections)
+;;  (let ((section-plist (cdr section)))
+;;    (plist-put section-plist :icon nil)))
+
+;; Remove the footer
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+#+END_SRC
+* Package Configuration
+#+BEGIN_SRC elisp
+;; "Default" location for org files
+(setq org-directory "~/org/")
+
+;; Disables the exit confirmation
+(setq confirm-kill-emacs nil)
+
+;; Sane undo
+(setq evil-want-fine-undo t)
+
+;; Make the one and two letter search commands scan the entire buffer and not just the current line
+(setq evil-snipe-scope 'buffer)
+
+;; Makes Dired show only file and folder names. `)` to toggle between detailed and undetailed views.
+(add-hook 'dired-mode-hook 'dired-hide-details-mode)
+
+;; Prevents evil delete commands from copying text in addition to removing it.
+;; It does this by making each delete command copy text to the "black hole"
+;; register (_), which leaves the system clipboard and other registers untouched.
+;; Use the " register (e.g. ""diw) if the old behaviour is desired.
+(defadvice! my-evil-delete-default-to-black-hole-a
+  (fn beg end &optional type register yank-handler)
+  "Advise `evil-delete' to set default REGISTER to the black hole register."
+  :around #'evil-delete
+  (unless register (setq register ?_))
+  (funcall fn beg end type register yank-handler))
+#+END_SRC
+* Keybinds
+#+BEGIN_SRC elisp
+;; SPC o t and SPC o T
+(map!
+ :leader
+ "ot" #'open-wt-here
+ "oT" #'open-admin-wt-here)
+#+END_SRC
+* Custom Commands
+#+BEGIN_SRC elisp
+(defun open-wt-here ()
+  "Open Windows Terminal in current directory."
+  (interactive)
+  (call-process "wt" nil 0 nil "-d" (windows-path (expand-file-name default-directory))))
+
+;; Passes a command of the form `cmd "/c wt -d C:\path\to\dir"' to `powershell start'
+;; -Verb runAs lets wt run with administrator privileges
+;; It's unclear why powershell has to ask cmd to open wt; asking powershell to open
+;; wt directly doesn't seem to work for some reason
+(defun open-admin-wt-here ()
+  "Open Windows Terminal with administrator privileges in current directory."
+  (interactive)
+  (call-process
+   "powershell"
+   nil
+   0
+   nil
+   "start"
+   "cmd"
+   (concat "\"/c wt -d " (windows-path (expand-file-name default-directory)) "\"")
+   "-Verb"
+   "runAs"))
+
+(defun windows-path (str)
+  (replace-regexp-in-string "\/" "\\\\" str))
+#+END_SRC
