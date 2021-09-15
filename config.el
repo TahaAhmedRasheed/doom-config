@@ -19,23 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-
-;; An integral `:size' is interpreted as pixels. Floating-point numbers are
-;; interpreted as points.
-
-(setq fira-spec (font-spec :name "Fira Code" :size 13 :weight 'semi-light))
-
-(setq jetbrains-spec (font-spec :name "JetBrains Mono" :size 13 :weight 'light))
-
-(setq source-spec (font-spec :name "Source Code Pro" :size 10.2 :weight 'regular))
-
-(setq doom-font source-spec
-      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -62,59 +52,3 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
-
-(setq confirm-kill-emacs nil)
-
-(setq evil-want-fine-undo t)
-
-(setq evil-snipe-scope 'buffer)
-
-(add-hook 'dired-mode-hook 'dired-hide-details-mode)
-
-;; Remove the icons on the dashboard
-;;(dolist (section +doom-dashboard-menu-sections)
-;;  (let ((section-plist (cdr section)))
-;;    (plist-put section-plist :icon nil)))
-
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
-
-(defun open-wt-here ()
-  "Open Windows Terminal in current directory."
-  (interactive)
-  (call-process "cmd" nil 0 nil "/c" "wt" "-d" (expand-file-name default-directory)))
-
-;; Passes a command of the form `cmd "/c wt -d C:\path\to\dir"' to `powershell start'
-;; -Verb runAs lets wt run with administrator privileges
-;; It's unclear why powershell has to ask cmd to open wt; asking powershell to open
-;; wt directly doesn't seem to work for some reason
-(defun open-admin-wt-here ()
-  "Open Windows Terminal with administrator privileges in current directory."
-  (interactive)
-  (call-process
-   "powershell"
-   nil
-   0
-   nil
-   "start"
-   "cmd"
-   (concat "\"/c wt -d " (expand-file-name default-directory) "\"")
-   "-Verb"
-   "runAs"))
-
-(map!
- :leader
- "ot" #'open-wt-here
- "oT" #'open-admin-wt-here)
-
-;; Prevents evil delete commands from copying text in addition to removing it.
-;; It does this by making each delete command copy text to the "black hole"
-;; register (_), which leaves the system clipboard and other registers untouched.
-;; Use the " register explicitly (e.g. ""diw) if the old behaviour is desired.
-(defadvice! my-evil-delete-default-to-black-hole-a
-  (fn beg end &optional type register yank-handler)
-  "Advise `evil-delete' to set default REGISTER to the black hole register."
-  :around #'evil-delete
-  (unless register (setq register ?_))
-  (funcall fn beg end type register yank-handler))
