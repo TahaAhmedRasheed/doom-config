@@ -71,6 +71,8 @@
 
 (setq evil-snipe-scope 'buffer)
 
+(setq evil-cross-lines t)
+
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
 ;; Remove the icons on the dashboard
