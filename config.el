@@ -3,6 +3,8 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(if (eq system-type 'gnu/linux)
+    (setq default-directory "/mnt/c/Users/HAIER"))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -74,7 +76,7 @@
 (setq evil-cross-lines t)
 
 (after! org
-  (plist-put org-format-latex-options :scale 1.1))
+  (plist-put org-format-latex-options :scale 1.3))
 
 ;; This overrides org-mode's `+org/shift-return'
 (defun open-below-without-insert (count)
