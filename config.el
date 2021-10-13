@@ -63,7 +63,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . fullscreen))
 
 (setq confirm-kill-emacs nil)
 
@@ -73,6 +73,20 @@
 
 (setq evil-cross-lines t)
 
+(after! org
+  (plist-put org-format-latex-options :scale 1.1))
+
+;; This overrides org-mode's `+org/shift-return'
+(defun open-below-without-insert (count)
+  "Insert a new line below point without switching to Insert state.
+The insertion will be repeated COUNT times."
+  (interactive "p")
+  (evil-open-below count)
+  (evil-normal-state)
+  (message ""))
+
+(map! :map evil-normal-state-map "<S-return>" #'open-below-without-insert)
+
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
 ;; Remove the icons on the dashboard
@@ -81,6 +95,13 @@
 ;;    (plist-put section-plist :icon nil)))
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+
+(beacon-mode 1)
+(setq beacon-blink-delay 0.3
+      beacon-blink-duration 0.2)
+
+;; (setq langtool-language-tool-server-jar
+;;       "C:\ProgramData\chocolatey\lib\languagetool\tools\LanguageTool-5.1\languagetool-server.jar")
 
 (defun open-wt-here ()
   "Open Windows Terminal in current directory."
