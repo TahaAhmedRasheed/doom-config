@@ -105,6 +105,30 @@ The insertion will be repeated COUNT times."
 ;; (setq langtool-language-tool-server-jar
 ;;       "C:\ProgramData\chocolatey\lib\languagetool\tools\LanguageTool-5.1\languagetool-server.jar")
 
+(after! ox-latex
+  (add-to-list
+   'org-latex-classes
+   `("deeparticle"
+     ,(concat
+      "\\documentclass[11pt]{article}\n"
+      "\\usepackage{enumitem}\n"
+      "\\newenvironment{deepsection}[1]{\\begin{enumerate}[label={}] \\item \\textbf{#1} \\newline}{\\end{enumerate}}")
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
+     ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}"))))
+
 (defun open-wt-here ()
   "Open Windows Terminal in current directory."
   (interactive)
