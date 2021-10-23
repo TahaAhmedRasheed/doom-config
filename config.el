@@ -129,6 +129,9 @@ The insertion will be repeated COUNT times."
      ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}")
      ("\\begin{deepsection}{%s}" "\\end{deepsection}" "\\begin{deepsection}{%s}" "\\end{deepsection}"))))
 
+(add-hook 'org-mode-hook #'xenops-mode)
+(setq xenops-reveal-on-entry t)
+
 (defun open-wt-here ()
   "Open Windows Terminal in current directory."
   (interactive)

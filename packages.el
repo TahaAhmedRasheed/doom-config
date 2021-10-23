@@ -50,3 +50,5 @@
 ;(unpin! t)
 
 (package! beacon)
+
+(package! xenops)
