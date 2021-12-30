@@ -1,0 +1,61 @@
+#+TITLE: Environment
+
+* HOME environment variable
+Hardcoded at present. A more robust option could be to make the =%HOME%= variable point to =%USERPROFILE%=.
+
+* Fonts
+** all-the-icons
+** Source Code Pro
+Easily available online.
+
+* Git
+** GitHub Desktop and SourceTree
+** Add Git utilities to PATH
+[[C:\Program Files\Git\usr\bin]]
+** Remember credentials/access token
+Run =git config --global credential.helper store=
+
+* LaTeX
+** MiKTeX
+Ensure the dvipng and dvisvgm packages are installed.
+
+* WSL
+** Installation
+Run =wsl --install= in Windows Terminal.
+*** Known issues
+**** Persistent reboot request
+Try toggling Hyper-V in Windows optional features.
+
+* Spellcheck
+** Hunspell
+On WSL, =sudo apt-get update && sudo apt-get install hunspell=
+Dictionaries can be acquired from https://cgit.freedesktop.org/libreoffice/dictionaries/
+
+* C++
+** Install LLVM for Windows
+Installs clang, clangd, clang-tidy, clang-format, etc.
+** Install Visual Studio
+Provides the C++ std library.
+** Clangd configuration
+In [[%LocalAppData%\clangd\config.yaml]]
+
+#+BEGIN_SRC yaml
+CompileFlags:                     # Tweak the parse settings
+  Add: [-xc++, -Wall, -Wextra, -std=c++20, -pedantic-errors,
+        -Wshadow, -Wnon-virtual-dtor, -Wold-style-cast, -Wcast-align,
+        -Wunused, -Woverloaded-virtual, -Wconversion, -Wsign-conversion,
+        -Wnull-dereference, -Wdouble-promotion, -Wformat=2]      # treat all files as C++, enable more warnings and erros
+#+END_SRC
+** Cling installation
+On WSL, install the necessary dependencies: https://root.cern/install/dependencies/#ubuntu-and-other-debian-based-distributions
+Then get cling from https://root.cern/download/cling/
+Use the =bunzip cling.tar.bz2= and =tar -xf cling.tar= commands to decompress and extract the cling directory.
+Add the following bat script to the PATH on Windows
+#+BEGIN_SRC bat
+@echo off
+wsl /path/to/cling-dir/bin/cling
+#+END_SRC
+
+* Further work
+** Dictionaries
+The =hunspell= directory in [[C:\Users\brain\AppData\Local\Programs\MiKTeX]] could offer some guide.
