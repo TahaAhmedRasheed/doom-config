@@ -56,6 +56,11 @@ Add the following bat script to the PATH on Windows
 wsl /path/to/cling-dir/bin/cling
 #+END_SRC
 
+
+* HTML
+** html-tidy formatter
+Run =choco install html-tidy=
+
 * Further work
 ** Dictionaries
 The =hunspell= directory in [[C:\Users\brain\AppData\Local\Programs\MiKTeX]] could offer some guide.
