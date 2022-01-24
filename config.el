@@ -160,10 +160,17 @@ The insertion will be repeated COUNT times."
    "-Verb"
    "runAs"))
 
+(defun open-explorer-here ()
+  "Open Windows explorer in current directory."
+  (interactive)
+  (shell-command "start .")
+  (message ""))
+
 (map!
  :leader
  "ot" #'open-wt-here
- "oT" #'open-admin-wt-here)
+ "oT" #'open-admin-wt-here
+ "oe" #'open-explorer-here)
 
 ;; Prevents evil delete commands from copying text in addition to removing it.
 ;; It does this by making each delete command copy text to the "black hole"
