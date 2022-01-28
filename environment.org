@@ -60,6 +60,17 @@ wsl /path/to/cling-dir/bin/cling
 * HTML
 ** html-tidy formatter
 Run =choco install html-tidy=
+*** Configuration
+Done inside a single file. The filename or extension does not matter, however .yaml was chosen as it provides syntax highlighting. Currently, my config file is at =apps/configuration/htmltidy.yaml=. Set the =HTML_TIDY= environment variable to point to this file.
+
+#+begin_src yaml
+wrap: 100
+gnu-emacs: yes
+#+end_src
+
+References:
+http://api.html-tidy.org/tidy/tidylib_api_5.2.0/tidy_config.html
+http://api.html-tidy.org/tidy/tidylib_api_5.2.0/quick_ref.html for documentation on individual configuration options
 
 * Further work
 ** Dictionaries
