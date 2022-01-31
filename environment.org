@@ -66,6 +66,7 @@ Done inside a single file. The filename or extension does not matter, however .y
 #+begin_src yaml
 wrap: 100
 gnu-emacs: yes
+indent: auto
 #+end_src
 
 References:
