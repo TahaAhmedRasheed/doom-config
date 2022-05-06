@@ -69,6 +69,12 @@
 
 (setq confirm-kill-emacs nil)
 
+(after! lsp-clangd
+  (add-to-list 'lsp-clients-clangd-args '"--clang-tidy"))
+
+(after! cc-mode
+  (setq c-basic-offset 2))
+
 (setq evil-want-fine-undo t)
 
 (setq evil-snipe-scope 'buffer)
