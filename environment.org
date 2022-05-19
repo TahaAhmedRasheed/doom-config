@@ -73,6 +73,10 @@ References:
 http://api.html-tidy.org/tidy/tidylib_api_5.2.0/tidy_config.html
 http://api.html-tidy.org/tidy/tidylib_api_5.2.0/quick_ref.html for documentation on individual configuration options
 
+* Markdown
+** Enabling preview support
+Install marked using =npm install -g marked=
+
 * Further work
 ** Dictionaries
 The =hunspell= directory in [[C:\Users\brain\AppData\Local\Programs\MiKTeX]] could offer some guide.
