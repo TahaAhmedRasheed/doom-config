@@ -40,11 +40,17 @@ Provides the C++ std library.
 In [[%LocalAppData%\clangd\config.yaml]]
 
 #+BEGIN_SRC yaml
-CompileFlags:                     # Tweak the parse settings
+CompileFlags:
   Add: [-xc++, -Wall, -Wextra, -std=c++20, -pedantic-errors,
         -Wshadow, -Wnon-virtual-dtor, -Wold-style-cast, -Wcast-align,
         -Wunused, -Woverloaded-virtual, -Wconversion, -Wsign-conversion,
-        -Wnull-dereference, -Wdouble-promotion, -Wformat=2]      # treat all files as C++, enable more warnings and erros
+        -Wnull-dereference, -Wdouble-promotion, -Wformat=2]
+---
+If:
+  PathMatch: [.*\.c, .*\.h]
+CompileFlags:
+  Add: [-std=c11]
+  Remove: [-xc++, -std=c++20]
 #+END_SRC
 ** Cling installation
 On WSL, install the necessary dependencies: https://root.cern/install/dependencies/#ubuntu-and-other-debian-based-distributions
