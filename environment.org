@@ -62,6 +62,12 @@ Add the following bat script to the PATH on Windows
 wsl /path/to/cling-dir/bin/cling
 #+END_SRC
 
+* Java
+- Install the JDK
+- Set the =JAVA_HOME= environment variable to =C:\Program Files\Java\jdk-16.0.2= (or similar)
+** Maven installation
+Download and unzip the maven package and place it in =apps\portapps=.
+Add =C:\Users\HAIER\Desktop\apps\portapps\apache-maven-3.8.6= (or similar) to the path.
 
 * HTML
 ** html-tidy formatter
