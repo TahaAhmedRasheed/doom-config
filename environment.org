@@ -61,6 +61,10 @@ Add the following bat script to the PATH on Windows
 @echo off
 wsl /path/to/cling-dir/bin/cling
 #+END_SRC
+** include/ and lib/ dirs
+Set the =CPATH= env var to =portapps/C and C++ ecosystem/include=. Set the =LIBRARY_PATH= env var to =portapps/C and C++ ecosystem/bin=.
+** CMake installation
+Install CMake. Install Ninja. Install the CMake language server using =pip install cmake-language-server=.
 
 * Java
 - Install the JDK
