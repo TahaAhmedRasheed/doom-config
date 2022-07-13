@@ -73,6 +73,15 @@ Install CMake. Install Ninja. Install the CMake language server using =pip insta
 Download and unzip the maven package and place it in =apps\portapps=.
 Add =C:\Users\HAIER\Desktop\apps\portapps\apache-maven-3.8.6= (or similar) to the path.
 
+* Python
+** Known issues
+*** Flycheck executable for python not being configured
+Produces this error when opening a python file:
+#+begin_src
+Suspicious state from syntax checker python-pycompile: Flycheck checker python-pycompile returned 49, but its output contained no errors
+#+end_src
+This is fixed in config.el, but this may break if the name of executable is different on another system.
+
 * HTML
 ** html-tidy formatter
 Run =choco install html-tidy=

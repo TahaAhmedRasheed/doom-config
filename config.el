@@ -89,6 +89,9 @@
 (after! web-mode
   (setq web-mode-markup-indent-offset 2))
 
+(after! python-mode
+  (setq flycheck-python-pycompile-executable "python"))
+
 ;; This overrides org-mode's `+org/shift-return'
 (defun open-below-without-insert (count)
   "Insert a new line below point without switching to Insert state.
