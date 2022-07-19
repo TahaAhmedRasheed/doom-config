@@ -81,6 +81,10 @@
 
 (setq evil-cross-lines t)
 
+(setq explicit-shell-file-name "c:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe")
+(setq explicit-powershell.exe-args '())
+(setq comint-process-echoes t)
+
 (display-time-mode 1)
 
 (after! org
@@ -175,10 +179,13 @@ The insertion will be repeated COUNT times."
   (shell-command "start .")
   (message ""))
 
+;; FIXME: Descriptions for the ot and oT bindings are overwritten
 (map!
  :leader
- "ot" #'open-wt-here
- "oT" #'open-admin-wt-here
+ :desc "Open Windows Terminal here" "ot" #'open-wt-here
+ :desc "Open Windows Terminal here as admin" "oT" #'open-admin-wt-here
+ :desc "Toggle shell popup" "os" #'+shell/toggle
+ :desc "Open shell here" "oS" #'+shell/here
  "oe" #'open-explorer-here)
 
 ;; Prevents evil delete commands from copying text in addition to removing it.
