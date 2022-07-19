@@ -80,10 +80,16 @@
 (setq evil-snipe-scope 'buffer)
 
 (setq evil-cross-lines t)
-
 (setq explicit-shell-file-name "c:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe")
-(setq explicit-powershell.exe-args '())
+(setq explicit-powershell.exe-args '("-NoLogo"))
 (setq comint-process-echoes t)
+
+(map!
+ :after shell
+ :map shell-mode-map
+ :localleader
+ :desc "Clear shell" "c" #'comint-clear-buffer
+ :desc "Stop command" "s" #'comint-interrupt-subjob)
 
 (display-time-mode 1)
 
