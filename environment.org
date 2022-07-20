@@ -65,6 +65,8 @@ wsl /path/to/cling-dir/bin/cling
 Set the =CPATH= env var to =portapps/C and C++ ecosystem/include=. Set the =LIBRARY_PATH= env var to =portapps/C and C++ ecosystem/bin=.
 ** CMake installation
 Install CMake. Install Ninja. Install the CMake language server using =pip install cmake-language-server=.
+** OpenGL
+- Get =glslangValidator= from https://github.com/KhronosGroup/glslang/releases/tag/master-tot and place it in =pathapps=.
 
 * Java
 - Install the JDK
