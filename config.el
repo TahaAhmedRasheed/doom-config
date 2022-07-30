@@ -80,7 +80,7 @@
 (setq evil-snipe-scope 'buffer)
 
 (setq evil-cross-lines t)
-(setq explicit-shell-file-name "c:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe")
+(setq explicit-shell-file-name "C:\\Program Files\\PowerShell\\7\\pwsh.exe")
 (setq explicit-powershell.exe-args '("-NoLogo"))
 (setq comint-process-echoes t)
 
