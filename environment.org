@@ -1,0 +1,8 @@
+#+title: Environment
+
+Not intended in its current state to be used as a standalone reference.
+Consult the environment.org file on the =master= branch in conjunction with this.
+
+* C/C++
+** clangd
+In =~/.config/clangd/config.yaml=
