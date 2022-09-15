@@ -29,8 +29,30 @@
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
 ;;;;; EVIL
+
 ;; TODO Use win32yank.exe ... somehow
-;; TODO Set delete commands to use the black hole register
+
+;; Set d, c, x to use the black hole register by default
+(defadvice! evil-delete-to-black-hole
+  (fn beg end &optional type register yank-handler)
+  "Advise `evil-delete' to set default REGISTER to the black hole register."
+  :around #'evil-delete
+  (unless register (setq register ?_))
+  (funcall fn beg end type register yank-handler))
+
+(defadvice! evil-change-to-black-hole
+  (fn beg end &optional type register yank-handler delete-func)
+  "Advise `evil-change' to set default REGISTER to the black hole register."
+  :around #'evil-change
+  (unless register (setq register ?_))
+  (funcall fn beg end type register yank-handler delete-func))
+
+(defadvice! evil-delete-char-to-black-hole
+  (fn beg end &optional type register)
+  "Advise `evil-delete-char' to set default REGISTER to the black hole register."
+  :around #'evil-delete-char
+  (unless register (setq register ?_))
+  (funcall fn beg end type register))
 
 ;; Let h,j,k,l wrap through lines
 (setq evil-cross-lines t)
