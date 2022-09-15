@@ -1,0 +1,4 @@
+#+title: Usage
+
+- Revisit Vim linewise commands (Practical Vim)
+- Learn to use vterm. Why does =p= not paste? How to pass ESC to a program on the terminal?
