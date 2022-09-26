@@ -3,3 +3,23 @@
 - Revisit Vim linewise commands (Practical Vim)
 - Learn to use vterm. Why does =p= not paste? How to pass ESC to a program on the terminal?
 - imenu seems useful
+- Do we need targets.vim functionality? It seems a lot of it is covered already (e.g. with _aa for comma-separated lists and _ab for parentheses)
+- A function to =jump to other end of last selection=. Useful for when a paste leaves you on the wrong side.
+- Can multiple cursors be deployed using the mouse?
+- Interchange =j=, =k= with =gj=, =gk=?
+- A =SPC o= command to open the current file in the default program (start.exe)?
+- Surely there must be a way to more easily navigate to your most frequently visted directories? A =SPC f R=? Having to navigate to some folder on my Windows desktop from my Linux root each time is horrible. I'm not sure if putting a =.projectile= in the desktop is a good idea either.
+- Ctrl-r to repeat the most recent action (unless there's something in the undo stack), similar to Ctrl+Y behaviour in MS Word?
+- hlissner on workspaces:
+  #+begin_quote
+  Workspaces are basically virtual frames with isolated buffer lists.
+
+  The three workflows I see/hear about most:
+
+  1. Folks generating ~4-6 permanent workspaces at startup and dedicating each to certain kinds of work (e.g. webdev, gamedev, class work, notes, etc).
+  2. Opening one workspace per active project/apps (mu4e, irc, twittering-mode, etc). To keep things separate.
+  3. Generating a workspace for every active task (this is how I use it). I'm working on =main= when a doom bug report rolls in, so I spin up a workspace for solving that bug. Once I'm done, I kill it and I'm back to what I was working on. Or go deeper <Insert inception horn>.
+
+  Up to you which works for you, or come up with your own.
+  #+end_quote
+- On minibuffer interaction  - what keybindings are available? There's =C-j= and =C-k=, but surely there's ways to copy text, paste text, etc. Other sh-like commands? (A listing of those commands can be found [[https://nullprogram.com/blog/2021/03/11/][here]]) Should probably a present a full overview (what TAB does, etc) (for doomtorial)

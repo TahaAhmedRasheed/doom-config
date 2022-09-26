@@ -30,7 +30,7 @@
 
 ;;;;; EVIL
 
-;; TODO Use win32yank.exe ... somehow
+;; TODO Use win32yank.exe if needed
 
 ;; Set d, c, x to use the black hole register by default
 (defadvice! evil-delete-to-black-hole
@@ -64,15 +64,21 @@
 (setq evil-want-fine-undo t)
 
 ;;;;; SPELL
-;; TODO Don't have spellchecking toggled on by default
-
+;; TODO Don't have spellchecking toggled on by default when using the :spell module
+;; (after! spell-fu
+;;   (remove-hook! '(text-mode yaml-mode conf-mode prog-mode) #'spell-fu-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; KEYBINDS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; See https://discourse.doomemacs.org/t/how-to-re-bind-keys/
 
-;; Set M-j, M-k to mirror M-DownArrown M-UpArrow
+;; Set M-j, M-k to mirror M-DownArrow M-UpArrow
 ;; Overwrites default-indent-new-line and kill-sentence
 (map! "M-j" #'drag-stuff-down
       "M-k" #'drag-stuff-up)
+
+;; DEL deletes a character in normal mode. So should backspace then.
+(map! :map evil-normal-state-map
+      "<backspace>" #'evil-delete-backward-char)
