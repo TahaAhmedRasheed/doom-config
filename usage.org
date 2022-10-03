@@ -23,3 +23,7 @@
   Up to you which works for you, or come up with your own.
   #+end_quote
 - On minibuffer interaction  - what keybindings are available? There's =C-j= and =C-k=, but surely there's ways to copy text, paste text, etc. Other sh-like commands? (A listing of those commands can be found [[https://nullprogram.com/blog/2021/03/11/][here]]) Should probably a present a full overview (what TAB does, etc) (for doomtorial)
+- Dired - open file at point in default program
+- "Press =v= to select a range of text, or =V= to select whole lines, or =Ctrl-V= /(=Ctrl-Q= if you use =Ctrl-V= to paste)/ to select a block" (emphasis mine)
+- A command to open the most recently closed buffer (and select from a list of recently closed buffers)?
+- [[https://github.com/victorhge/iedit][iedit]] is a "less flexible, but more predictable" alternative to multiple cursors
