@@ -69,7 +69,8 @@
 ;;   (remove-hook! '(text-mode yaml-mode conf-mode prog-mode) #'spell-fu-mode))
 
 ;;;;; OLIVETTI
-(setq olivetti-body-width 130)
+(after! olivetti
+  (setq olivetti-body-width 130))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; KEYBINDS
