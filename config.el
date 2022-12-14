@@ -11,7 +11,7 @@
 
 ;; An integral `:size' is interpreted as pixels. Floating-point numbers are
 ;; interpreted as points.
-(setq doom-font (font-spec :name "Source Code Pro" :size 10.9 :weight 'regular)
+(setq doom-font (font-spec :name "Source Code Pro" :size 10.0 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullscreen))
@@ -68,6 +68,8 @@
 ;; (after! spell-fu
 ;;   (remove-hook! '(text-mode yaml-mode conf-mode prog-mode) #'spell-fu-mode))
 
+;;;;; OLIVETTI
+(setq olivetti-body-width 130)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; KEYBINDS
@@ -82,3 +84,5 @@
 ;; DEL deletes a character in normal mode. So should backspace then.
 (map! :map evil-normal-state-map
       "<backspace>" #'evil-delete-backward-char)
+
+(map! :leader :desc "Olivetti" "t o" #'olivetti-mode)

@@ -9,6 +9,12 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
+;; Disabled dirvish while I debate its usefulness. What utiltiy does it provide
+;; beyond file previews and file mving/copying niceties?
+;; (package! dirvish)
+
+(package! olivetti)
+
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/radian-software/straight.el#the-recipe-format

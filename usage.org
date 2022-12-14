@@ -27,3 +27,6 @@
 - "Press =v= to select a range of text, or =V= to select whole lines, or =Ctrl-V= /(=Ctrl-Q= if you use =Ctrl-V= to paste)/ to select a block" (emphasis mine)
 - A command to open the most recently closed buffer (and select from a list of recently closed buffers)?
 - [[https://github.com/victorhge/iedit][iedit]] is a "less flexible, but more predictable" alternative to multiple cursors
+- A way to use environment information in init.el? E.g. enabling vterm if in linux and built with native module supports .. else enable the shell module.
+- +=M-x align= :))+ ~gl~ :))
+- dired/dirvish/ranger ain't got shit on Windows' File Explorer (or perhaps on any OS' default file explorer) (actually don't know about dirvish/ranger but I can make that bet without losing any sleep) (Alt+LeftArrow, Alt+RightArrow, Alt+UpArrow) is so intuitive
