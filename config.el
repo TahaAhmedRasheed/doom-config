@@ -12,7 +12,7 @@
 ;; An integral `:size' is interpreted as pixels. Floating-point numbers are
 ;; interpreted as points.
 (setq doom-font (font-spec :name "Source Code Pro" :size 10.0 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 13))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullscreen))
 
