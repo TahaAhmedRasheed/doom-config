@@ -68,6 +68,10 @@
 ;; (after! spell-fu
 ;;   (remove-hook! '(text-mode yaml-mode conf-mode prog-mode) #'spell-fu-mode))
 
+;;;;;; SPELL 2
+(setq ispell-program-name "C:\\msys64\\mingw64\\bin\\hunspell.exe")
+;; (setq ispell-dictionary "en_US")
+
 ;;;;; OLIVETTI
 (after! olivetti
   (setq olivetti-body-width 130))
