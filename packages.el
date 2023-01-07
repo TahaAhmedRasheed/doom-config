@@ -46,6 +46,8 @@
 ;; Use `:pin' to specify a particular commit to install.
 ;(package! builtin-package :pin "1a2b3c4d5e")
 
+;; Here until https://github.com/doomemacs/doomemacs/pull/6984 is merged.
+(package! lsp-metals :pin "5c0cdd35e09ba6e5daf21c196cf269b38c3e1eef")
 
 ;; Doom's packages are pinned to a specific commit and updated from release to
 ;; release. The `unpin!' macro allows you to unpin single packages...
