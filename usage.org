@@ -9,19 +9,19 @@
 - Interchange =j=, =k= with =gj=, =gk=?
 - A =SPC o= command to open the current file in the default program (start.exe)?
 - Surely there must be a way to more easily navigate to your most frequently visted directories? A =SPC f R=? Having to navigate to some folder on my Windows desktop from my Linux root each time is horrible. I'm not sure if putting a =.projectile= in the desktop is a good idea either.
-- Ctrl-r to repeat the most recent action (unless there's something in the undo stack), similar to Ctrl+Y behaviour in MS Word?
-- hlissner on workspaces:
-  #+begin_quote
-  Workspaces are basically virtual frames with isolated buffer lists.
+  - Ctrl-r to repeat the most recent action (unless there's something in the undo stack), similar to Ctrl+Y behaviour in MS Word?
+  - hlissner on workspaces:
+    #+begin_quote
+    Workspaces are basically virtual frames with isolated buffer lists.
 
-  The three workflows I see/hear about most:
+    The three workflows I see/hear about most:
 
-  1. Folks generating ~4-6 permanent workspaces at startup and dedicating each to certain kinds of work (e.g. webdev, gamedev, class work, notes, etc).
-  2. Opening one workspace per active project/apps (mu4e, irc, twittering-mode, etc). To keep things separate.
-  3. Generating a workspace for every active task (this is how I use it). I'm working on =main= when a doom bug report rolls in, so I spin up a workspace for solving that bug. Once I'm done, I kill it and I'm back to what I was working on. Or go deeper <Insert inception horn>.
+    1. Folks generating ~4-6 permanent workspaces at startup and dedicating each to certain kinds of work (e.g. webdev, gamedev, class work, notes, etc).
+    2. Opening one workspace per active project/apps (mu4e, irc, twittering-mode, etc). To keep things separate.
+    3. Generating a workspace for every active task (this is how I use it). I'm working on =main= when a doom bug report rolls in, so I spin up a workspace for solving that bug. Once I'm done, I kill it and I'm back to what I was working on. Or go deeper <Insert inception horn>.
 
-  Up to you which works for you, or come up with your own.
-  #+end_quote
+    Up to you which works for you, or come up with your own.
+    #+end_quote
 - On minibuffer interaction  - what keybindings are available? There's =C-j= and =C-k=, but surely there's ways to copy text, paste text, etc. Other sh-like commands? (A listing of those commands can be found [[https://nullprogram.com/blog/2021/03/11/][here]]) Should probably a present a full overview (what TAB does, etc) (for doomtorial)
 - Dired - open file at point in default program
 - "Press =v= to select a range of text, or =V= to select whole lines, or =Ctrl-V= /(=Ctrl-Q= if you use =Ctrl-V= to paste)/ to select a block" (emphasis mine)
@@ -30,3 +30,31 @@
 - A way to use environment information in init.el? E.g. enabling vterm if in linux and built with native module supports .. else enable the shell module.
 - +=M-x align= :))+ ~gl~ :))
 - dired/dirvish/ranger ain't got shit on Windows' File Explorer (or perhaps on any OS' default file explorer) (actually don't know about dirvish/ranger but I can make that bet without losing any sleep) (Alt+LeftArrow, Alt+RightArrow, Alt+UpArrow) is so intuitive
+- Lots to learn from [[https://tecosaur.github.io/emacs-config/config.html][Teco's config]].
+- If I'm going to add in a variable pitch font like Overpass or whatever, should I add a corresponding note to environment.org like I did for Source Code Pro (or whichever place the info from environment.org ends up shifting to)
+- Create a video catalogue of ways you do X inside magit (and upload it I suppose) (and side-by-side comparisons with the Git command-line?) (Aim for a high coverage of Git (Should double as a way of actually learning the intricacies of Git))
+- Zen mode: scaling back the text-scale a little? Also Overpass should have a larger font size in the font spec.
+- This is not even a joke, but having Zen helps so much with concentration. Also teaches me to not be afraid of increasing the font size when required.
+- Now that I have zen .. should I just remove the olivetti package? Maybe add in some options to re-enable the modeline if required (by configuring the zen module).
+- Should I also go and disable the Git gutter indicators from Zen mode? Probably.
+- See what things to pull over from all the menu bar options (blinking cursor, etc).
+- That Emacs package I wanted to create - the one showing you 'dynamic' cheatsheets of all presently available keybindings. Something very similarly exists: [[https://keycombiner.com][KeyCombiner]]. It even does the thing where clicking/activating a prefix button shows you all available keybindings beginning with that prefix key.
+- Maybe zen isn't that much of life changer as my extremely favourable first impressions have led me to believe.
+- Github [[https://github.com/akermu/emacs-libvterm/issues/12][issue]] on getting libvterm to work on Windows.
+- Emacs compilation [[https://sourceforge.net/p/emacsbinw64/wiki/Build%20guideline%20for%20MSYS2-MinGW-w64%20system/][guide]] for MSYS2
+- C++: Should have good cppreference.com intergration. At the very minimum, a command that takes some text and searches for it in cppreference.com. Could take the text from the user or from point.
+- The "whole file/document/buffer" text object I wanted already exists: it's the =g= text object.
+- Command to replace all instances of selection with word - such a command probably exists, and if it doesn't define it.
+- Pasting a mutli-line block (one after the other) is harder than it should be
+- Pasting some line and then changing the number in each line (e.g. num1, num2, num3) - this should be made faster
+- I really need to incorporate copilot or tabnine
+- Easy program runs (like =SPC c e=) are not something to skimp on.
+- Search highlighting needs to automatically get the fuck out of the way
+- Flycheck enitre project?
+- Look into the =+peek= flag for the lsp module. Ref: https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
+- Making  good 'empty' buffers
+- Fundamentally, why can't I just create my own emacs module making terminals work?
+- Add keybinds for =expand-region=.
+- I can safely rebind C-v in insert mode to paste (C-q is already bound to do the same thing as C-v). Now to decide what to do with =C-c=.
+- [[https://github.com/emacs-evil/evil/issues/172][On restricting the =C-o= and =C-i= jumps to the current buffer.]]
+- The =Select coding system (default utf-8)= issue is git bisectable.
