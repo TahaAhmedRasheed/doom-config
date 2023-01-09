@@ -58,3 +58,8 @@
 - I can safely rebind C-v in insert mode to paste (C-q is already bound to do the same thing as C-v). Now to decide what to do with =C-c=.
 - [[https://github.com/emacs-evil/evil/issues/172][On restricting the =C-o= and =C-i= jumps to the current buffer.]]
 - The =Select coding system (default utf-8)= issue is git bisectable.
+- Make .gitignore utility.
+- Fix file-templates.
+- https://codeberg.org/akib/emacs-eat
+- Add environment note on: https://github.com/elm-tooling/elm-language-server/issues/692
+- The xref-find-reference interface is just better than lsp-ui-peek.
