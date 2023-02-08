@@ -42,7 +42,7 @@
 - Maybe zen isn't that much of life changer as my extremely favourable first impressions have led me to believe.
 - Github [[https://github.com/akermu/emacs-libvterm/issues/12][issue]] on getting libvterm to work on Windows.
 - Emacs compilation [[https://sourceforge.net/p/emacsbinw64/wiki/Build%20guideline%20for%20MSYS2-MinGW-w64%20system/][guide]] for MSYS2
-- C++: Should have good cppreference.com intergration. At the very minimum, a command that takes some text and searches for it in cppreference.com. Could take the text from the user or from point.
+- C++: Should have good cppreference.com integration. At the very minimum, a command that takes some text and searches for it in cppreference.com. Could take the text from the user or from point.
 - The "whole file/document/buffer" text object I wanted already exists: it's the =g= text object.
 - Command to replace all instances of selection with word - such a command probably exists, and if it doesn't define it.
 - Pasting a mutli-line block (one after the other) is harder than it should be
@@ -51,15 +51,78 @@
 - Easy program runs (like =SPC c e=) are not something to skimp on.
 - Search highlighting needs to automatically get the fuck out of the way
 - Flycheck enitre project?
-- Look into the =+peek= flag for the lsp module. Ref: https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek
+- +Look into the =+peek= flag for the lsp module. Ref: https://github.com/emacs-lsp/lsp-ui#lsp-ui-peek+
 - Making  good 'empty' buffers
 - Fundamentally, why can't I just create my own emacs module making terminals work?
 - Add keybinds for =expand-region=.
 - I can safely rebind C-v in insert mode to paste (C-q is already bound to do the same thing as C-v). Now to decide what to do with =C-c=.
 - [[https://github.com/emacs-evil/evil/issues/172][On restricting the =C-o= and =C-i= jumps to the current buffer.]]
-- The =Select coding system (default utf-8)= issue is git bisectable.
+- The =Select coding system (default utf-8)= issue is git bisectable. Also see how this very issue was fixed previously.
 - Make .gitignore utility.
 - Fix file-templates.
 - https://codeberg.org/akib/emacs-eat
 - Add environment note on: https://github.com/elm-tooling/elm-language-server/issues/692
 - The xref-find-reference interface is just better than lsp-ui-peek.
+- Can use the Consolas font if I'm ever wanting to fit more lines on the screen at once.
+- Need to make use =SPC s i= when viewing org-mode documents.
+- Most definitely read through the vertico module docs.
+- Use =SPC '=.
+- Put the Doom image onto the dashboard.
+- There's commands to run, compile and test your project in the =SPC p= project menu. Also commands to issue shell commands in the project root.
+- Vim-like shell interactions in Emacs; see how it's done.
+- Should absolutely have more powerful editing commands within insert mode. See what exists: =M-w=, =C-u= and the like. See what can be added.
+- But that could lead to a troubling dilemma, why use normal mode at all?
+- Need to organize my org files. "Reminders", +musings+ ramblings, ideas, and concrete TODOs.
+- Should I embrace the org lifestyle, even if just a temporary solution.
+- We do, desparately need a Doom tutorial; Idhar nahin karega writing to phir kidhar?
+- Do I really need the vertico icons? (Unrelated: it does highlight a shortcoming with fs interfaces in Emacs(-like environments): sorting isn't very easy - by filetype, by fileicon, or by whatever)
+- Tecosaur has those weird quirky randomized messages running in the footer of his dashboard. Could use that, or even better - could display a random tip there.
+- =SPC '= does WHAT? Multiple commands. Modules.
+- Would have to use proper formatting: keybinds highlighted like they are inside the minibuffer.
+- Well, this is how keybinds are highlighted inside org-mode: =[[kbd:][C-x p]]= becomes [[kbd:][C-x p]].
+- Identifying faults with the Emacs-facilitated notetaking system: stunted rich media format support, lack of cross-platform usage (you won't be directly taking notes on your phone)
+- Could definitely have a =SPC h t= like interface for fonts - I've already seen how it's possible to change fonts on the fly - without restarting Emacs.
+- Doom tabs solution - Tab Bar? Centaur Tabs? Make sure to get =C-TAB= working.
+- Emacs /can/ use the system dialog to open files. How to access this functionality?
+- In what ways are =C-s= and =/= different? Could the shortcut be repurposed for expand-region?
+- Lots of free real estate under =M-=
+- =eat='s author does seem receptive to collaborating on Windows support. [[https://codeberg.org/akib/emacs-eat/issues/35#issuecomment-764331][Ref]]. Email correspondence laga. (This situation is perhaps not so strangely reminiscent of [[https://github.com/hvesalai/emacs-scala-mode/issues/160][kazark futilely chipping away at Scala 3 support in Emacs]].)
+- Basic explanation for why terminal emulators do not work on Windows. [[Startin][Ref]].
+- Should there be entire-dictionary completion in text mode derivatives? Efficiency issues? (maybe activated after a certain number of consecutive characters has been typed in).
+- Whatever completion framework I settle on, it should probably have fuzzy searching, seeing how I misspell things in the completion prompt so much. Seems like =ivy= has this already.
+- Me talking about 'tab-able' and 'subsequence' macros (I had LaTeX in mind): [[https://discord.com/channels/406534637242810369/695219328165085265/897813043126337608][Ref]]
+- Yeh poori =er= namespace hai kya?
+- er/{expand,contract}-region break org-mode for some reason.
+- Should =SPC t C= (Olivetti command) take an argument for '%age of total horizontal space'?
+- karthik points to [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html][the elisp manual page on 'Completion']] as a starting point for understanding completion and completion frameworks inside Emacs.
+- Enabling er/expand-region might have actually been my smartest decision in quite a while. Now to add some polish. Make it recognise the sub-words in a camelCase identifier as a distinct region?
+- For the same reason I got rid of those Vertico icons, should I also find a way to hide the =rw-rw-rw= column in the Find File/Find Dir interface?
+- Could maybe use [[https://github.com/axelf4/hotfuzz][this]] for fuzzy completion.
+- Should code configuring some package or module check whether that package/module is installed? Using =module-p= or whatever.
+- Looks like I could learn some things from [[https://github.com/tefkah/doom-emacs-config][tefkah's config]].
+- Definitely need to make use of fill-column indicator more often.
+- Look into [[https://github.com/punassuming/ranger.el][ranger]], is it something worth incorportaing into Emacs?
+- Man, there really need to be videos of people's Doom setups. Get an idea of how people /really/ use Doom.
+- Consider setting up mu4e sometime?
+- It does seem people have gotten spell check to not be so intrusive. How?
+- We could have a more useful start screen, showing you your recent files / projects? Your org-agenda progress? Your progress on a certain project (e.g. 27 commits in the last...)?
+- Yep, you can track down whatever is modifying your variables, using [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Variable-Debugging.html][=debug-on-variable-change=]].
+- =SPC h i= then =g G= then =(elisp)heading= to view an Info node inside the elisp manual.
+- Just figure out what term.el does, and do it again lmao.
+- Woh gnu waala splash art bhi acha tha
+- Use Elfeed - see sources you're subscribed to in Opera news
+- Diff from last change
+- Hook-up a formatter for HTML to web-mode.
+- Class-less CSS frameworks look like they could gel really well with Org HTML exports. [[https://watercss.kognise.dev][Water.css]], [[https://newcss.net][newcss]], [[https://hakanalpay.com/bahunya/][Bahunya]], and [[https://www.cssbed.com][others]].
+- Does fill-column indicator abide by your editorconfig?
+- Surely there's a package improving over ispell. In its present state it has a horrible false positive rate.
+- Persistent undo history (and a tree)
+- Workspaces lagta hai kaam aane lagengi
+- Different LSP servers in the same directory - does it cause problems? E.g. HTML and Python files together.
+- Bind [[kbd:][SPC c X]] to ~flycheck-list-errors~.
+- =evil-accomplice= jaisi cheez honi to zarur chahiyay.
+- The [[https://github.com/semiosis/pen.el][emacs Pen.el package]].
+- AHK script to rebind CapsLock to ESC (for Emacs only?). A toggle-caps command or a 'special' insert mode.
+- "DocView"? - making reading documentation for programming languages as efficient as =SPC h v= and =SPC h f=.
+- =repeat-mode=
+- It is really unfortunate that writing in Discord's message boxes (for instance) is sometimes more efficient than the Vim model of editing (examples include: copy-pasting stuff, undo/redo).
