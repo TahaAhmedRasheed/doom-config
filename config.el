@@ -9,6 +9,11 @@
 
 (display-time-mode 1)
 
+(setq blink-cursor-blinks -1) ; Keep cursor blinking
+(blink-cursor-mode 1)
+
+(menu-bar-mode 1) ; Invaluable learning tool, if a little ugly
+
 ;; An integral `:size' is interpreted as pixels. Floating-point numbers are
 ;; interpreted as points.
 (setq doom-font (font-spec :name "Source Code Pro" :size 10.0 :weight 'regular)
