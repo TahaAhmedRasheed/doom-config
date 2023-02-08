@@ -16,8 +16,10 @@
 
 ;; An integral `:size' is interpreted as pixels. Floating-point numbers are
 ;; interpreted as points.
-(setq doom-font (font-spec :name "Source Code Pro" :size 10.0 :weight 'regular)
+(setq doom-font (font-spec :name "SauceCodePro NF" :size 10.0 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "Overpass" :size 13))
+
+;; (setq fancy-splash-image (concat doom-user-dir "cacomon.png"))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullscreen))
 
@@ -68,18 +70,56 @@
 ;; More granular changes inside an insert mode session
 (setq evil-want-fine-undo t)
 
-;;;;; SPELL
+
+;;;;; SPELL (DOOM MODULE)
 ;; TODO Don't have spellchecking toggled on by default when using the :spell module
 ;; (after! spell-fu
 ;;   (remove-hook! '(text-mode yaml-mode conf-mode prog-mode) #'spell-fu-mode))
 
-;;;;;; SPELL 2
+
+;;;;;; SPELL
 (setq ispell-program-name "C:\\msys64\\mingw64\\bin\\hunspell.exe")
 ;; (setq ispell-dictionary "en_US")
 
+
 ;;;;; OLIVETTI
+
+;; Why does after! olivetti work, but after! olivetti-mode seemingly doesn't?
 (after! olivetti
   (setq olivetti-body-width 130))
+
+
+;;;;; SHELL
+(setq explicit-shell-file-name "c:\\Program Files\\PowerShell\\7\\pwsh.exe")
+
+
+;;;;; LSP
+
+;; When there is only one available code action, by default
+;; `lsp-execute-code-action' will automatically execute the action without
+;; asking for confirmation first, this is problematic since often I just want to
+;; see what code actions are available on a line, without necessarily executing
+;; them.
+(after! lsp-mode
+  (setq lsp-auto-execute-action nil))
+
+;;;;; EMMET
+
+(defun emmet-insert-at-next-edit-point (count)
+  (interactive "^p")
+  (emmet-next-edit-point count)
+  (evil-insert 1))
+
+(defun emmet-insert-at-prev-edit-point (count)
+  (interactive "^p")
+  (emmet-prev-edit-point count)
+  (evil-insert 1))
+
+
+;;;;; COPILOT
+(use-package! copilot
+  :defer t
+  :hook (prog-mode . copilot-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; KEYBINDS
@@ -87,7 +127,7 @@
 ;; See https://discourse.doomemacs.org/t/how-to-re-bind-keys/
 
 ;; Set M-j, M-k to mirror M-DownArrow M-UpArrow
-;; Overwrites default-indent-new-line and kill-sentence
+;; Overrides default-indent-new-line and kill-sentence
 (map! "M-j" #'drag-stuff-down
       "M-k" #'drag-stuff-up)
 
@@ -95,4 +135,27 @@
 (map! :map evil-normal-state-map
       "<backspace>" #'evil-delete-backward-char)
 
-(map! :leader :desc "Olivetti" "t o" #'olivetti-mode)
+(map! :leader :desc "Center text" "t C" #'olivetti-mode)
+
+(map! :leader :desc "Menu bar" "t M" #'menu-bar-mode)
+
+;; Choice of keybinds is definitely TBF
+;; Currently breaks org-mode links for some reason (and possibly more)
+(map! "M-i" #'er/contract-region
+      "M-o" #'er/expand-region)
+
+(map! :after emmet-mode
+      :map emmet-mode-keymap
+      :vieomrg "C-M-<right>" #'emmet-next-edit-point
+      :vieomrg "C-M-<left>"  #'emmet-prev-edit-point
+      :n       "C-M-<right>" #'emmet-insert-at-next-edit-point
+      :n       "C-M-<left>"  #'emmet-insert-at-prev-edit-point)
+
+(map! :after copilot
+      :map copilot-completion-map
+      "<right>"   #'copilot-accept-completion
+      "C-f"       #'copilot-accept-completion
+      "C-<right>" #'copilot-accept-completion-by-word
+      "M-f"       #'copilot-accept-completion-by-word
+      "C-e"       #'copilot-accept-completion-by-line
+      "<end>"     #'copilot-accept-completion-by-line)
